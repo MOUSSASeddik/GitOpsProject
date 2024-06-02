@@ -1,1 +1,1 @@
-this is the gitops directory for testing case 
+my gitop repository 

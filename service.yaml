@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-firstapp-service-cd
+  labels:
+    app: my-firstapp-service-cd
+spec:
+  selector:
+    app: my-firstapp-cd
+
+  ports:
+    - port: 3000
+      targetPort: 3000
+
+  type: LoadBalancer
