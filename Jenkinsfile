@@ -23,21 +23,22 @@ pipeline {
                 """
             }
                  }
-             stage("Push the changed deployment file to GitHub") {
-            steps {
-                sh """
-                    git config --global user.name "MOUSSASeddik"
-                    git config --global user.email "medseddikmoussa@gmail.com"
-                    git add deployment.yaml
-                    git commit -m "Updated Deployment Manifest"
-                """
-                withCredentials([gitUsernamePassword(credentialsId: 'GithubCredentialToken', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+            stage("Push the changed deployment file to GitHub") {
+                steps {
                     sh """
-                        git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MOUSSASeddik/GitOpsProject.git main
+                        git config --global user.name "MOUSSASeddik"
+                        git config --global user.email "medseddikmoussa@gmail.com"
+                        git add deployment.yaml
+                        git commit -m "Updated Deployment Manifest"
                     """
+                    withCredentials([usernamePassword(credentialsId: 'GithubCredentialToken', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        sh """
+                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MOUSSASeddik/GitOpsProject.git main
+                        """
+                    }
                 }
             }
-        }
+
 
     }
 }
