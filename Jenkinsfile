@@ -11,7 +11,7 @@ pipeline {
          }
          stage("Checkout from SCM") {
              steps {
-                     git branch: 'main', credentialsId: 'github', url: 'https://github.com/MOUSSASeddik/GitOpsProject.git'
+                     git branch: 'main', credentialsId: 'GithubCredentialToken', url: 'https://github.com/MOUSSASeddik/GitOpsProject.git'
              }
          }
          stage("Update the Deployment Tags") {
