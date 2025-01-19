@@ -22,8 +22,8 @@ pipeline {
                     cat deployment.yaml
                 """
             }
-         }
-         stage("Push the changed deployment file to GitHub") {
+                 }
+             stage("Push the changed deployment file to GitHub") {
             steps {
                 sh """
                     git config --global user.name "MOUSSASeddik"
@@ -31,10 +31,13 @@ pipeline {
                     git add deployment.yaml
                     git commit -m "Updated Deployment Manifest"
                 """
-                withCredentials([gitUsernamePassword(credentialsId: 'GithubCredentialToken', gitToolName: 'Default')]) {
-                    sh "git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/MOUSSASeddik/GitOpsProject.git main"
+                withCredentials([gitUsernamePassword(credentialsId: 'GithubCredentialToken', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                    sh """
+                        git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MOUSSASeddik/GitOpsProject.git main
+                    """
                 }
             }
-         }
+        }
+
     }
 }
