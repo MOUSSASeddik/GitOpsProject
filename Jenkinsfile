@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-          APP_NAME = "my-firstapp-cd"
+          APP_NAME = "redditcaching-cd"
     }
     stages {
          stage("Cleanup Workspace") {
