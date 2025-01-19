@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-firstapp-cd
+  name: redditcaching-cd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-firstapp-cd
+      app: redditcaching-cd
   template:
     metadata:
       labels:
-        app: my-firstapp-cd
+        app: redditcaching-cd
     spec:
       containers:
-        - name: my-firstapp-cd-containerapp
-          image: mydockerhubidm/my-firstapp-ci:1.0.0-20
+        - name: redditcaching-cd-containerapp
+          image: mydockerhubidm/redditcaching:1.0.0-20
           resources:
             limits:
               cpu: "1"
