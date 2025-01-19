@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-          APP_NAME = "my-firstapp-cd"
+          APP_NAME = "redditcaching"
     }
     stages {
          stage("Cleanup Workspace") {
@@ -11,7 +11,7 @@ pipeline {
          }
          stage("Checkout from SCM") {
              steps {
-                     git branch: 'main', credentialsId: 'github', url: 'https://github.com/MOUSSASeddik/GitOpsProject.git'
+                     git branch: 'main', credentialsId: 'GithubCredentialToken', url: 'https://github.com/MOUSSASeddik/GitOpsProject.git'
              }
          }
          stage("Update the Deployment Tags") {
@@ -31,8 +31,8 @@ pipeline {
                     git add deployment.yaml
                     git commit -m "Updated Deployment Manifest"
                 """
-                withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                    sh "git push https://github.com/MOUSSASeddik/GitOpsProject.git main"
+                withCredentials([gitUsernamePassword(credentialsId: 'GithubCredentialToken', gitToolName: 'Default')]) {
+                    sh "git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/MOUSSASeddik/GitOpsProject.git main"
                 }
             }
          }
