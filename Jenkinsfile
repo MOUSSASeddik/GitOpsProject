@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
           APP_NAME = "redditcaching"
+          HARD_USERNAME = "medseddikmoussa@gmail.com"
     }
     stages {
          stage("Cleanup Workspace") {
@@ -34,7 +35,7 @@ pipeline {
                 """
                 withCredentials([usernamePassword(credentialsId: 'GithubCredentialToken', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh """
-                        git push "https://medseddikmoussa@gmail.com:${GIT_PASSWORD}@github.com/MOUSSASeddik/GitOpsProject.git" main
+                        git push "https://${HARD_USERNAME}:${GIT_PASSWORD}@github.com/MOUSSASeddik/GitOpsProject.git" main
                     """
                 }
             }
