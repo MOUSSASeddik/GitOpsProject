@@ -36,7 +36,7 @@ pipeline {
                 """
                 withCredentials([usernamePassword(credentialsId: 'GithubCredentialToken', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh """
-                        git push "https://${HARD_USERNAME}:${GIT_PASSWORD}@github.com/MOUSSASeddik/GitOpsProject.git" main
+                        git push "https://${HARD_USERNAME}:${HARD_PASSWORD}@github.com/MOUSSASeddik/GitOpsProject.git" main
                     """
                 }
             }
