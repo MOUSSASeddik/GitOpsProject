@@ -32,7 +32,7 @@ pipeline {
                     git add deployment.yaml
                     git commit -m "Updated Deployment Manifest"
                 """
-                withCredentials([gitUsernamePassword(credentialsId: 'sshGithubJenkServerGUI', gitToolName: 'Default')]) {
+                withCredentials([gitUsernamePassword(credentialsId: 'loginPasswordGithub', gitToolName: 'Default')]) {
                     sh "git push https://github.com/MOUSSASeddik/GitOpsProject.git main"
                 }
             }
