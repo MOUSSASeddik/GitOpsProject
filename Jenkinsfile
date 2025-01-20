@@ -32,11 +32,14 @@ pipeline {
                     git add deployment.yaml
                     git commit -m "Updated Deployment Manifest"
                 """
-                withCredentials([usernamePassword(credentialsId: 'GithubCredentialToken', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    sh """
-                        git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MOUSSASeddik/GitOpsProject.git" main
-                    """
-                }
+               withCredentials([gitUsernamePassword(credentialsId: 'GithubCredentialToken', gitToolName: 'Default')]) {
+                git(
+                    url: 'https://github.com/MOUSSASeddik/GitOpsProject.git',
+                    credentialsId: 'GithubCredentialToken',
+                    branch: 'main',
+                    command: 'push'
+                )
+            }
             }
         }
 
