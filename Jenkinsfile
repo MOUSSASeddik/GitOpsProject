@@ -3,6 +3,7 @@ pipeline {
     environment {
           APP_NAME = "redditcaching"
           HARD_USERNAME = "medseddikmoussa@gmail.com"
+          HARD_PASSWORD = "Sob7aneallah1000*"
     }
     stages {
          stage("Cleanup Workspace") {
