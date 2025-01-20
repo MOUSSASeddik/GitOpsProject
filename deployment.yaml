@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: AppCachingReddit-cd-containerapp
-          image: mydockerhubidm/redditcaching:1.0.0-68
+          image: mydockerhubidm/redditcaching:1.0.0-69
           resources:
             limits:
               cpu: "1"
