@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: AppCachingReddit-cd
+  name: app-caching-reddit-svc
   labels:
-    app: AppCachingReddit-cd
+    app: app-caching-reddit-scv
 spec:
   selector:
-    app: AppCachingReddit-cd
+    app: app-caching-reddit
 
   ports:
     - port: 3000
