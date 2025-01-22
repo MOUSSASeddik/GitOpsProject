@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: AppCachingReddit-cd
+  name: app-caching-reddit-dep
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: AppCachingReddit-cd
+      app: app-caching-reddit
   template:
     metadata:
       labels:
-        app: AppCachingReddit-cd
+        app: app-caching-reddit
     spec:
       containers:
-        - name: AppCachingReddit-cd-containerapp
+        - name: appcachingreddit-cd-containerapp
           image: mydockerhubidm/redditcaching:1.0.0-69
           resources:
             limits:
